@@ -30,7 +30,7 @@ public class PostController {
         return ResponseEntity.ok(posts);
     }
     @PostMapping("/create")
-    public ResponseEntity<PostDTO> createPost(PostDTO postDTO) {
+    public ResponseEntity<PostDTO> createPost(@RequestBody PostDTO postDTO) {
         PostDTO createdPost = postService.createPost(postDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPost);
     }
