@@ -1,8 +1,10 @@
 package edu.miu.WebAppArchLab.service.imlp;
 
+import edu.miu.WebAppArchLab.DTO.CommentDTO;
 import edu.miu.WebAppArchLab.DTO.PostDTO;
 import edu.miu.WebAppArchLab.DTO.UserDTO;
 
+import edu.miu.WebAppArchLab.domain.Comment;
 import edu.miu.WebAppArchLab.domain.User;
 import edu.miu.WebAppArchLab.repository.PostRepository;
 import edu.miu.WebAppArchLab.repository.UserRepository;
@@ -97,6 +99,11 @@ public class UserServiceImpl implements UserService {
         List <User> users = userRepository.findUsersByPostsTitle(title);
         return users.stream().map(user -> modelMapper.map(user, UserDTO.class))
                 .collect(Collectors.toList());
+    }
+
+    public Optional<CommentDTO> findCommentByUserAndPost(Long userId, Long postId, Long commentId) {
+        Optional<Comment> comment = userRepository.findCommentByUserAndPost(userId, postId, commentId);
+        return comment.map(value -> modelMapper.map(value, CommentDTO.class));
     }
 
     public UserDTO convertToDTO(User  user){

@@ -1,6 +1,7 @@
 package edu.miu.WebAppArchLab.controller;
 
 
+import edu.miu.WebAppArchLab.DTO.CommentDTO;
 import edu.miu.WebAppArchLab.DTO.PostDTO;
 import edu.miu.WebAppArchLab.DTO.UserDTO;
 import edu.miu.WebAppArchLab.repository.UserRepository;
@@ -74,6 +75,13 @@ public class UserController {
     public ResponseEntity<List<UserDTO>> findUsersByPostTitle(@PathVariable String title) {
         List<UserDTO> users = userService.findUsersByPostsTitle(title);
         return ResponseEntity.ok(users);
+
+    }
+
+    @GetMapping("/{userId}/posts/{postId}/comments/{commentId}")
+    public ResponseEntity<CommentDTO> findCommentByUserAndPost(@PathVariable Long userId, @PathVariable Long postId, @PathVariable Long commentId) {
+        Optional<CommentDTO> comment = userService.findCommentByUserAndPost(userId, postId, commentId);
+        return comment.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
 
