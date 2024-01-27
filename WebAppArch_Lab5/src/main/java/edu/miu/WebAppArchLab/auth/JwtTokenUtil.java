@@ -65,15 +65,4 @@ public class JwtTokenUtil implements Serializable {
 
 
 
-//    public String generateToken(UserDetails userDetails) {
-//
-//        return null;
-//
-//    }
-//    //Validate token
-//    public boolean validateToken(String token, UserDetails userDetails) {
-//        // TODO Auto-generated method stub
-//        return false;
-//    }
-
 }
