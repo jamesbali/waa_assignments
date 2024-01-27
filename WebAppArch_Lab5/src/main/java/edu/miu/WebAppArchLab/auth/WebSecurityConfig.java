@@ -31,7 +31,7 @@ public class WebSecurityConfig {
 
     public SecurityFilterChain filterChain(HttpSecurity http, HandlerMappingIntrospector introspector) throws Exception {
 
-        MvcRequestMatcher adminMatcher = new MvcRequestMatcher(introspector, "/admin/**");
+        MvcRequestMatcher adminMatcher = new MvcRequestMatcher(introspector, "/api/users");
         MvcRequestMatcher authenticateMatcher = new MvcRequestMatcher(introspector, "/authenticate");
 
 
@@ -39,6 +39,7 @@ public class WebSecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(adminMatcher).hasAuthority("ROLE_ADMIN")
+                        //.requestMatchers(adminMatcher).permitAll()
                         .requestMatchers(authenticateMatcher).permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(sessionManagement ->

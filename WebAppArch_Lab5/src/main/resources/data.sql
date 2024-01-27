@@ -14,8 +14,11 @@
 -- INSERT INTO comment (name, post_id) VALUES ('Comment 4', 3);
 
 -- Insert Users
-INSERT INTO users ( name) VALUES ( 'Alice');
-INSERT INTO users ( name) VALUES ( 'Bob');
+-- INSERT INTO users ( name) VALUES ( 'Alice');
+-- INSERT INTO users ( name) VALUES ( 'Bob');
+
+INSERT INTO users (name, password, role) VALUES ('Alice', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wrq0pS7XLCHO4yHZ.BW/yvWu1feo2', 'ROLE_ADMIN');
+INSERT INTO users (name, password, role) VALUES ('Bob', 'generated_hash_for_Bob', 'ROLE_USER');
 
 -- Insert Posts
 INSERT INTO post ( title, content, author, user_id) VALUES ( 'First Post', 'This is the content of the first post', 'Alice', 1);
