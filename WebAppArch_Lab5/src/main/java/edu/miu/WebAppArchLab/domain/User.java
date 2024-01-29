@@ -1,10 +1,10 @@
 package edu.miu.WebAppArchLab.domain;
 
-import edu.miu.WebAppArchLab.auth.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import edu.miu.WebAppArchLab.auth.Role;
 
 import java.util.List;
 
@@ -20,11 +20,13 @@ public class User {
     private Long id;
     private String name;
     private String password;
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    @JoinColumn
+
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Post> posts;
 
 }

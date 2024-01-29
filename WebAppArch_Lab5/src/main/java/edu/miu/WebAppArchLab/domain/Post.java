@@ -23,6 +23,9 @@ public class Post {
     @OneToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "post_id")
     private List<Comment> comments;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
 
 }

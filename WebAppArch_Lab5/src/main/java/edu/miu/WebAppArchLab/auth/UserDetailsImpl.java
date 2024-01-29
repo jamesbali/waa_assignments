@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import edu.miu.WebAppArchLab.domain.Role;
+
 
 import java.util.List;
 
@@ -24,10 +26,15 @@ public class UserDetailsImpl implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
 
         return new org.springframework.security.core.userdetails.User(user.getName(), user.getPassword(), getAuthority(user));
-    }
+//
+//        org.springframework.security.core.userdetails.User.UserBuilder builder = org.springframework.security.core.userdetails.User.withUsername(username);
+//        builder.password(user.getPassword());
+//        builder.roles(user.getRoles().stream().map(Role::getRole).toArray(String[]::new));
+//        return builder.build();
+   }
 
     private List<SimpleGrantedAuthority> getAuthority(User user) {
-        return List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole().name()));
+        return List.of(new SimpleGrantedAuthority(/*"ROLE_" +*/ user.getRole().name()));
     }
 
 

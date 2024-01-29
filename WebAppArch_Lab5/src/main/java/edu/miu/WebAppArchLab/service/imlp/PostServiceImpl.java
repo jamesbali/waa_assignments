@@ -2,10 +2,14 @@ package edu.miu.WebAppArchLab.service.imlp;
 
 import edu.miu.WebAppArchLab.DTO.PostDTO;
 import edu.miu.WebAppArchLab.domain.Post;
+import edu.miu.WebAppArchLab.domain.User;
 import edu.miu.WebAppArchLab.repository.PostRepository;
+import edu.miu.WebAppArchLab.repository.UserRepository;
 import edu.miu.WebAppArchLab.service.PostService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +29,9 @@ public class PostServiceImpl implements PostService {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Autowired
+    private UserRepository userRepository;
+
     public PostDTO getPostById(Long id) {
 
         Post post = postRepositroy.findById(id).orElseThrow(() -> new NoSuchElementException("Post not found"));
@@ -38,8 +45,15 @@ public class PostServiceImpl implements PostService {
                 .collect(Collectors.toList());
     }
     public PostDTO createPost(PostDTO postDTO) {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        User user = userRepository.findByName(username).get();
         Post post = convertToEntity(postDTO);
+        post.setAuthor(user.getName());
+        post.setUser(user);
         post = postRepositroy.save(post);
+
         return convertToDTO(post);
     }
 
