@@ -39,8 +39,8 @@ public class WebSecurityConfig {
                      //   .requestMatchers(authenticateMatcher).permitAll()
                         .requestMatchers(HttpMethod.POST,"/authenticate").permitAll()
                      //   .requestMatchers(adminMatcher).hasRole("ROLE_ADMIN")
-                        .requestMatchers(HttpMethod.GET,"/api/posts").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST,"/api/posts/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET,"/api/posts").permitAll()//hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST,"/api/posts/**").permitAll()//.hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .sessionManagement(sessionManagement ->
                         sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
