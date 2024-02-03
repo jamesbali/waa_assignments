@@ -1,0 +1,115 @@
+/* App.css */
+body {
+  background-color: #f4f4f4; /* Light grey background */
+}
+
+.App {
+  text-align: center;
+}
+
+.container {
+  width: 1200px;
+  margin: auto;
+  background-color: white; /* White background for the main content area */
+  padding: 20px;
+  border-radius: 5px; /* Rounded corners for the container */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box-shadow for some depth */
+}
+
+.App-header {
+  background-color: #333;
+  color: rgb(230, 227, 227);
+  padding: 10px;
+}
+
+.post, .active-post {
+  border: 5px solid #1034ac;
+  padding: 10px;
+  margin: 3px;
+  width: 20%;
+}
+
+.active-post {
+  background-color: #4CAF50; /* Green color for active post */
+}
+
+.postsContainer {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: stretch;
+  flex-direction: row;
+}
+
+.post-details, .editPostForm, .addPostForm {
+  border-style: solid;
+  border-color: #39d605;
+  border-width: 2px;
+  border-radius: 10px;
+  width: 90%;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button-row {
+  display: flex;
+  justify-content: center; /* Aligns buttons to the start of the row */
+  gap: 10px; /* Spacing between buttons */
+}
+
+.edit-button, .delete-button {
+  padding: 10px 20px; /* Padding inside the buttons */
+  border: none; /* Removes the default border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  font-weight: bold; /* Makes the text bold */
+}
+
+.edit-button {
+  background-color: #4CAF50; /* Green background for edit */
+  color: white; /* White text */
+}
+
+.delete-button {
+  background-color: #f44336; /* Red background for delete */
+  color: white; /* White text */
+}
+
+.comment {
+  background-color: #f1f1f1;
+  padding: 10px;
+  margin: 5px 0;
+  border-left: 3px solid #1034ac;
+}
+
+/* Additional styles for the login form */
+.login-form {
+  width: 300px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #5cb85c;
+  color: white;
+  cursor: pointer;
+}
